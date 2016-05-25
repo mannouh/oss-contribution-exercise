@@ -56,7 +56,7 @@ def value_range(data):
     range : number
         The distance between the lowest and the highest value of ``data``.
     """
-    return 0.0
+    return data.max() - data.min()
 
 
 def rescale(data, lower=0.0, upper=1.0):
@@ -98,8 +98,8 @@ def cut_to_same_size(data_1, data_2):
         The two original arrays, the longer one cut at the end to the length of
         the shorter one so that both arrays have the same length.
     """
-    return data_1, data_2
-
+    length_min = min([len(data_1),len(data_2)])
+    return data_1[:length_min], data_2[:length_min]
 
 def pad_to_same_size(data_1, data_2, pad_with=0.0):
     """
